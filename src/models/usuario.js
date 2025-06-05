@@ -2,7 +2,7 @@ const { connect } = require("../config/db");
 const Logger = require("../utils/logger");
 
 class Usuario {
-  constructor(nome, email) {
+  constructor(nome, email, senha) {
     this.nome = nome;
     this.email = email;
     this.senha = senha;
@@ -19,7 +19,7 @@ class Usuario {
       console.log("Usuário inserido com sucesso: ", result.insertedId);
       client.close();
     } catch (error) {
-      Logger.log("Erro ao inserir usuário: " + error);
+      Logger.logError("Erro ao inserir usuário: " + error);
     }
   }
 
@@ -30,7 +30,7 @@ class Usuario {
       console.log("Usuários encontrados com sucesso: ", usuarios);
       client.close();
     } catch (error) {
-      Logger.log("Erro ao buscar usuários: " + error);
+      Logger.logError("Erro ao buscar usuários: " + error);
     }
   }
 
@@ -43,7 +43,7 @@ class Usuario {
       console.log("Usuários atualizados com sucesso: ", result.modifiedCount);
       client.close();
     } catch (error) {
-      Logger.log("Erro ao atualizar usuários: " + error);
+      Logger.logError("Erro ao atualizar usuários: " + error);
     }
   }
 
@@ -54,7 +54,7 @@ class Usuario {
       console.log("Usuários deletados com sucesso: ", result.deletedCount);
       client.close();
     } catch (error) {
-      Logger.log("Erro ao deletar usuários: " + error);
+      Logger.logError("Erro ao deletar usuários: " + error);
     }
   }
 }

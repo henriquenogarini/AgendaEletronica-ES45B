@@ -10,12 +10,12 @@ class Categoria {
     try {
       const { db, client } = await connect();
       const result = await db.collection("categorias").insertOne({
-        nome: this.nome
+        nome: this.nome,
       });
-      console.log("Categoria inserida:", result.insertedId);
+      console.log("Categoria inserida com sucesso:", result.insertedId);
       client.close();
     } catch (error) {
-      Logger.log("Erro ao inserir categoria: " + error);
+      Logger.logError("Erro ao inserir categoria: " + error);
     }
   }
 
@@ -23,11 +23,11 @@ class Categoria {
     try {
       const { db, client } = await connect();
       const categorias = await db.collection("categorias").find(filtro).toArray();
-      console.log("Categorias encontradas:", categorias);
+      console.log("Categorias encontradas com sucesso:", categorias);
       client.close();
       return categorias;
     } catch (error) {
-      Logger.log("Erro ao buscar categorias: " + error);
+      Logger.logError("Erro ao buscar categorias: " + error);
     }
   }
 
@@ -37,10 +37,10 @@ class Categoria {
       const result = await db.collection("categorias").updateMany(filtro, {
         $set: novosDados,
       });
-      console.log("Categorias atualizadas:", result.modifiedCount);
+      console.log("Categorias atualizadas com sucesso:", result.modifiedCount);
       client.close();
     } catch (error) {
-      Logger.log("Erro ao atualizar categorias: " + error);
+      Logger.logError("Erro ao atualizar categorias: " + error);
     }
   }
 
@@ -48,10 +48,10 @@ class Categoria {
     try {
       const { db, client } = await connect();
       const result = await db.collection("categorias").deleteMany(filtro);
-      console.log("Categorias deletadas:", result.deletedCount);
+      console.log("Categoria(a) deletadas com sucesso:", result.deletedCount);
       client.close();
     } catch (error) {
-      Logger.log("Erro ao deletar categorias: " + error);
+      Logger.logError("Erro ao deletar categorias: " + error);
     }
   }
 }

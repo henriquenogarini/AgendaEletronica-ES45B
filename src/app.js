@@ -1,21 +1,27 @@
-const Usuario = require("./usuario");
-const Evento = require("./evento");
+const usuarioCrud = require("./operations/crud/usuarioCrud");
+const categoriaCrud = require("./operations/crud/categoriaCrud");
+const eventoCrud = require("./operations/crud/eventoCrud");
 
-async function inserirUsuario() {
-  const user = new Usuario("Henrique", "henriquecarvalho@alunos.utfpr.edu.br", "senha123");
-  await user.inserir();
+//Executa as operações de CRUD para usuário, categoria e evento, sem opção de escolha do usuário.
+//Para testar cada caso, comente as linhas que não deseja executar.
+//Para executar, basta rodar o arquivo app.js.
+//Caso queira algo mais interativo, utilize o arquivo appInterativo.js.
+async function executar() {
+  await usuarioCrud.inserirUsuario(); // Inserir usuário
+  await categoriaCrud.inserirCategoria(); // Inserir categoria
+  await eventoCrud.inserirEvento(); // Inserir evento
+
+  await usuarioCrud.buscarUsuarios(); // Buscar usuários
+  await categoriaCrud.buscarCategorias(); // Buscar categorias
+  await eventoCrud.buscarEventos(); // Buscar eventos
+
+  await usuarioCrud.atualizarUsuario(); // Atualizar usuário
+  await categoriaCrud.atualizarCategoria(); // Atualizar categoria
+  await eventoCrud.atualizarEvento(); // Atualizar evento
+
+  //await usuarioCrud.deletarUsuario(); // Deletar usuário
+  //await categoriaCrud.deletarCategoria(); // Deletar categoria
+  //await eventoCrud.deletarEvento(); // Deletar evento
 }
 
-async function inserirCategoria() {
-  const categoria = new Categoria("Reunião");
-  await categoria.inserir();
-}
-
-async function inserirEvento() {
-  const evento = new Evento("Reunião de equipe", "2023-10-01T10:00:00Z", "2023-10-01T11:00:00Z", "Sala de reuniões");
-  await evento.inserir();
-}
-
-inserirUsuario();
-inserirCategoria();
-inserirEvento();
+executar();
