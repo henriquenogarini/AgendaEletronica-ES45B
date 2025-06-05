@@ -1,14 +1,21 @@
 const Usuario = require("./usuario");
 const Evento = require("./evento");
 
-async function testar() {
-  const user = new Usuario("Henrique", "henriquecarvalho@alunos.utfpr.edu.br");
+async function inserirUsuario() {
+  const user = new Usuario("Henrique", "henriquecarvalho@alunos.utfpr.edu.br", "senha123");
   await user.inserir();
+}
 
-  await Categoria.inserirCategoriasPadrao();
+async function inserirCategoria() {
+  const categoria = new Categoria("Reunião");
+  await categoria.inserir();
+}
 
-  const evento = new Evento("Reunião de projeto", "2025-06-01", "2025-06-01", "ID_DO_USUARIO");
+async function inserirEvento() {
+  const evento = new Evento("Reunião de equipe", "2023-10-01T10:00:00Z", "2023-10-01T11:00:00Z", "Sala de reuniões");
   await evento.inserir();
 }
 
-testar();
+inserirUsuario();
+inserirCategoria();
+inserirEvento();
