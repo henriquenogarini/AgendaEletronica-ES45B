@@ -19,9 +19,9 @@ async function executar() {
   await categoriaCrud.atualizarCategoria(); // Atualizar categoria
   await eventoCrud.atualizarEvento(); // Atualizar evento
 
-  //await usuarioCrud.deletarUsuario(); // Deletar usuário
-  //await categoriaCrud.deletarCategoria(); // Deletar categoria
-  //await eventoCrud.deletarEvento(); // Deletar evento
+  await usuarioCrud.deletarUsuario(); // Deletar usuário
+  await categoriaCrud.deletarCategoria(); // Deletar categoria
+  await eventoCrud.deletarEvento(); // Deletar evento
 }
 
 executar();
