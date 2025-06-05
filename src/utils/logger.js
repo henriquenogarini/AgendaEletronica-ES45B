@@ -1,9 +1,10 @@
 const fs = require('fs');
 
 class Logger {
-  static logError(mensagem, erro) {
-    const log = `[${new Date().toISOString()}] ${mensagem}: ${erro}\n`;
-    fs.appendFileSync('log_erros.txt', log);
+  static logError(error) {
+    const timestamp = new Date().toISOString();
+    const logMessage = `[${timestamp}] ERROR: ${error}\n`;
+    fs.appendFileSync("log.txt", logMessage);
   }
 }
 
