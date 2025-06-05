@@ -145,9 +145,9 @@ Data de fim (YYYY-MM-DDTHH:MM:SS): 2025-06-10T15:00:00
 
 ## 👥 Integrantes do Grupo
 
-- Henrique Nogarini
-- Vinicius Campeão
-- Vinicius Masao
+- Henrique Nogarini  RA: 2102374
+- Vinicius Campeão   RA: 2465396
+- Vinicius Masao     RA: 2209705
 
 ---
 
@@ -156,7 +156,7 @@ Data de fim (YYYY-MM-DDTHH:MM:SS): 2025-06-10T15:00:00
 - [Node.js](https://nodejs.org/)
 - [MongoDB](https://www.mongodb.com/)
 - [MongoDB Driver (mongodb)](https://www.npmjs.com/package/mongodb)
-- MongoDB Compass (GUI para visualização e manipulação de dados)
+- [MongoDB Compass (GUI para visualização e manipulação de dados)](https://www.mongodb.com/try/download/compass)
 
 ---
 
