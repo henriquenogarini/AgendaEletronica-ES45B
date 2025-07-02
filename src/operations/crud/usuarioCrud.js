@@ -1,20 +1,37 @@
 const Usuario = require("../../models/usuario");
+const Logger = require("../../utils/logger");
 
 async function inserirUsuario() {
-  const user = new Usuario("Joao", "joao@alunos.utfpr.edu.br", "123123124");
-  await user.inserir();
+  try {
+    const user = new Usuario("Henrique Nogarini", "henriquecarvalho@alunos.utfpr.edu.br", "123456");
+    await user.inserir();
+  } catch (error) {
+    Logger.logError("Erro ao inserir usuário: " + error.message);
+  }
 }
 
 async function buscarUsuarios() {
-  await Usuario.buscar();
+  try {
+    await Usuario.buscar();
+  } catch (error) {
+    Logger.logError("Erro ao buscar usuários: " + error.message);
+  }
 }
 
 async function atualizarUsuario() {
-  await Usuario.atualizar({ nome: "Joao" }, { email: "joao123@alunos.utfpr.edu.br" });
+  try {
+    await Usuario.atualizar({ email: "henriquecarvalho@alunos.utfpr.edu.br" }, { nome: "João Silva", senha: "novaSenha123" });
+  } catch (error) {
+    Logger.logError("Erro ao atualizar usuário: " + error.message);
+  }
 }
 
 async function deletarUsuario() {
-  await Usuario.deletar({ nome: "Joao" });
+  try {
+    await Usuario.deletar({ email: "henriquecarvalho@alunos.utfpr.edu.br" });
+  } catch (error) {
+    Logger.logError("Erro ao deletar usuário: " + error.message);
+  }
 }
 
 module.exports = {

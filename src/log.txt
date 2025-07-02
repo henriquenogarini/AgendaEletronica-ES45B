@@ -1,0 +1,1 @@
+[2025-07-02T01:59:25.020Z] ERROR: Erro ao inserir usuário: Error: Nome, email e senha são obrigatórios.

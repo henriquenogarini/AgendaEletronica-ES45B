@@ -13,6 +13,9 @@ class Evento {
 
 async inserir() {
     try {
+      if (!this.titulo || !this.descricao || !this.nomeCategoria || !this.nomeUsuario || !this.dataInicio || !this.dataFim) {
+        throw new Error("Todos os campos são obrigatórios para inserir um evento.");
+      }
       const { db, client } = await connect();
       const result = await db.collection("eventos").insertOne({
         titulo: this.titulo,
@@ -25,7 +28,7 @@ async inserir() {
       console.log("Evento inserido com sucesso:", result.insertedId);
       client.close();
     } catch (error) {
-      Logger.logError("Erro ao inserir evento: " + error);
+      Logger.logError("Erro ao inserir evento: " + error.message);
     }
   }
 
@@ -37,12 +40,18 @@ async inserir() {
       client.close();
       return eventos;
     } catch (error) {
-      Logger.logError("Erro ao buscar eventos: " + error);
+      Logger.logError("Erro ao buscar eventos: " + error.message);
     }
   }
   
   static async atualizar(filtro, novosDados) {
     try {
+      if (!filtro || Object.keys(filtro).length === 0) {
+        throw new Error("Filtro obrigatório para atualização.");
+      }
+      if (!novosDados || Object.keys(novosDados).length === 0) {
+        throw new Error("Dados novos obrigatórios para atualização.");
+      }
       const { db, client } = await connect();
       const result = await db.collection("eventos").updateMany(filtro, {
         $set: novosDados
@@ -50,18 +59,21 @@ async inserir() {
       console.log("Eventos atualizados com sucesso:", result.modifiedCount);
       client.close();
     } catch (error) {
-      Logger.logError("Erro ao atualizar eventos: " + error);
+      Logger.logError("Erro ao atualizar eventos: " + error.message);
     }
   }
 
   static async deletar(filtro) {
     try {
+      if (!filtro || Object.keys(filtro).length === 0) {
+        throw new Error("Filtro obrigatório para deletar eventos.");
+      }
       const { db, client } = await connect();
       const result = await db.collection("eventos").deleteMany(filtro);
       console.log("Eventos deletados com sucesso:", result.deletedCount);
       client.close();
     } catch (error) {
-      Logger.logError("Erro ao deletar eventos: " + error);
+      Logger.logError("Erro ao deletar eventos: " + error.message);
     }
   }
 }
